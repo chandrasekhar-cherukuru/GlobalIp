@@ -5,15 +5,18 @@ import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './contexts/AuthContext';
 import { DataProvider } from './contexts/DataContext';
 import { ThemeProvider } from './contexts/ThemeContext';
+
+// Pages & Components
+import Landing from './pages/Landing';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
-import OAuth2Callback from './components/Auth/OAuth2Callback'; // **NEW IMPORT**
+import OAuth2Callback from './components/Auth/OAuth2Callback';
 import Dashboard from './components/Dashboard/Dashboard';
 import CreateForm from './components/Create/CreateForm';
 import LinkPage from './components/Link/LinkPage';
-import ThankYou from './components/ThankYou/ThankYou'; // 🚨 **ADDED THIS IMPORT**
 import VerifyParticipants from './components/Dashboard/VerifyParticipants';
 import ProtectedRoute from './components/ProtectedRoute';
+
 
 function App() {
   return (
@@ -23,12 +26,14 @@ function App() {
           <Router>
             <div className="App">
               <Routes>
-                <Route path="/" element={<Login />} />
+                {/* Public Routes */}
+                <Route path="/" element={<Landing />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                
-                {/* **OAuth2 Callback Route** */}
                 <Route path="/oauth2/redirect" element={<OAuth2Callback />} />
-                
+                <Route path="/link/:id" element={<LinkPage />} />
+
+                {/* Protected Routes */}
                 <Route
                   path="/dashboard"
                   element={
@@ -45,11 +50,6 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
-                <Route path="/link/:id" element={<LinkPage />} />
-                
-                {/* 🚨 **ADDED THIS ROUTE** */}
-                <Route path="/thankyou" element={<ThankYou />} />
-                
                 <Route
                   path="/verify-participants"
                   element={
@@ -58,8 +58,12 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
+
+                {/* Catch-all - redirect to home */}
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
+
+              {/* Toast Notifications */}
               <Toaster
                 position="bottom-center"
                 containerStyle={{
