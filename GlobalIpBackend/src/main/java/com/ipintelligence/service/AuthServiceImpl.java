@@ -2,6 +2,8 @@ package com.ipintelligence.service;
 
 import com.ipintelligence.dto.AuthRequest;
 import com.ipintelligence.dto.AuthResponse;
+import com.ipintelligence.dto.ProfileRequest;
+import com.ipintelligence.dto.ProfileResponse;
 import com.ipintelligence.dto.RegisterRequest;
 import com.ipintelligence.model.User;
 import com.ipintelligence.repo.UserRepository;
@@ -51,7 +53,7 @@ public class AuthServiceImpl implements AuthService {
         }
         u.setRole(role);
 
-        //saves into db
+        // Save user into DB
         users.save(u);
 
         String token = jwt.generateToken(u.getEmail(), u.getRole());
@@ -72,5 +74,37 @@ public class AuthServiceImpl implements AuthService {
         return new AuthResponse(token, u.getId(), u.getUsername(), u.getEmail(), u.getRole());
     }
 
+    @Override
+    public ProfileResponse getProfile(String email) {
+        User user = users.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return new ProfileResponse(user.getId(), user.getUsername(), user.getEmail(), user.getRole());
+    }
 
+    @Override
+    public ProfileResponse updateProfile(String email, ProfileRequest request) {
+        User user = users.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (request.getUsername() != null && !request.getUsername().isBlank()) {
+            user.setUsername(request.getUsername());
+        }
+        if (request.getEmail() != null && !request.getEmail().isBlank()) {
+            if (users.existsByEmail(request.getEmail()) && !request.getEmail().equals(user.getEmail())) {
+                throw new RuntimeException("Email already exists");
+            }
+            user.setEmail(request.getEmail());
+        }
+
+        users.save(user);
+        return getProfile(email);
+    }
+
+    @Override
+    public void changePassword(String email, String newPassword) {
+        User user = users.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        user.setPassword(encoder.encode(newPassword));
+        users.save(user);
+    }
 }
