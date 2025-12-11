@@ -1,4 +1,29 @@
+# Backend - Maven & Java
 target/
 .mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+*.ear
+.DS_Store
 
+# Frontend - Node & React
+GlobalIpFrontend/node_modules/
+GlobalIpFrontend/build/
+GlobalIpFrontend/.env
+GlobalIpFrontend/.env.local
+GlobalIpFrontend/npm-debug.log*
+GlobalIpFrontend/yarn-debug.log*
+GlobalIpFrontend/yarn-error.log*
 
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
