@@ -1,70 +1,207 @@
-# Getting Started with Create React App
+# Global IP Intelligence Platform - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based web application providing user authentication, role-based dashboards, and IP intelligence analytics with a modern, responsive UI.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **Authentication System**
+  - JWT-based authentication
+  - OAuth2 Google Sign-In integration
+  - Secure login and registration
 
-### `npm start`
+- **Role-Based Dashboards**
+  - Admin Dashboard - User management and system administration
+  - Analyst Dashboard - IP analysis and threat intelligence
+  - User Dashboard - Personal IP monitoring and reports
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Modern UI/UX**
+  - Responsive design with Tailwind CSS
+  - Interactive data visualization with Recharts
+  - Clean and intuitive interface
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📋 Prerequisites
 
-### `npm test`
+- **React** installed
+- **npm** (comes with React)
+- Backend API running on `http://localhost:8080`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Tech Stack
 
-### `npm run build`
+- **React** 19.2.1 - UI framework
+- **React Router** 7.10.1 - Navigation
+- **Axios** 1.13.2 - HTTP client
+- **Tailwind CSS** 3.4.18 - Styling
+- **Recharts** 3.5.1 - Data visualization
+- **@react-oauth/google** 0.12.2 - Google OAuth integration
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📦 Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Navigate to the frontend directory:
+```bash
+cd GlobalIpFrontend
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install dependencies:
+```bash
+npm install
+```
 
-### `npm run eject`
+3. Configure environment (optional):
+Create a `.env` file in the root directory:
+```env
+REACT_APP_API_URL=http://localhost:8080
+REACT_APP_GOOGLE_CLIENT_ID=your-google-client-id
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Running the Application
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Development Mode
+```bash
+npm start
+```
+The application will open at `http://localhost:3000`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Build for Production
+```bash
+npm run build
+```
+Creates an optimized production build in the `build` folder
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Run Tests
+```bash
+npm test
+```
 
-## Learn More
+## 📁 Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+GlobalIpFrontend/
+├── public/                 # Static files
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+├── src/
+│   ├── api/               # API configuration
+│   │   └── axios.js       # Axios setup
+│   ├── components/        # React components
+│   │   ├── AdminDashboard.jsx
+│   │   ├── AnalystDashboard.jsx
+│   │   ├── UserDashboard.jsx
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   └── OAuth2RedirectHandler.jsx
+│   ├── pages/            # Page components
+│   │   ├── Dashboard.jsx
+│   │   └── Login.jsx
+│   ├── App.js            # Main application component
+│   ├── App.css           # App styles
+│   ├── index.js          # Entry point
+│   ├── index.css         # Global styles
+│   └── main.jsx          # Alternative entry point
+├── tailwind.config.js    # Tailwind configuration
+├── postcss.config.js     # PostCSS configuration
+├── package.json          # Dependencies and scripts
+└── README.md            # This file
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🔑 Key Components
 
-### Code Splitting
+### Authentication Components
+- **Login.jsx** - User login with JWT and OAuth2
+- **Register.jsx** - New user registration
+- **OAuth2RedirectHandler.jsx** - Handles OAuth2 callback
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Dashboard Components
+- **AdminDashboard.jsx** - Administrative interface for user management
+- **AnalystDashboard.jsx** - IP analysis tools and visualizations
+- **UserDashboard.jsx** - End-user interface for personal monitoring
 
-### Analyzing the Bundle Size
+## 🌐 API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The frontend communicates with the backend API through Axios. Configuration is in `src/api/axios.js`.
 
-### Making a Progressive Web App
+**Base URL:** `http://localhost:8080` (configured via proxy in package.json)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Authentication:**
+- Token stored in localStorage after login
+- Automatically included in API requests via Axios interceptors
 
-### Advanced Configuration
+## 🎨 Styling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This project uses **Tailwind CSS** for styling:
+- Configuration: `tailwind.config.js`
+- PostCSS plugins: `postcss.config.js`
+- Global styles: `src/index.css`
 
-### Deployment
+## 📊 Data Visualization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Uses **Recharts** for interactive charts and graphs.
 
-### `npm run build` fails to minify
+## 🧪 Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The project includes:
+- **Jest** - Unit testing framework
+- **React Testing Library** - Component testing
+- **@testing-library/user-event** - User interaction testing
+
+## 📝 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm start` | Run development server (port 3000) |
+| `npm run build` | Create production build |
+| `npm test` | Run test suite |
+| `npm run eject` | Eject from Create React App (irreversible) |
+
+## 🔧 Configuration
+
+### Proxy Configuration
+API requests are proxied to the backend. In `package.json`:
+```json
+"proxy": "http://localhost:8080"
+```
+
+## 🚀 Deployment
+
+Build for production and deploy to:
+- **Vercel**
+- **Netlify**
+- **AWS S3 + CloudFront**
+- **Azure Static Web Apps**
+
+## 🐛 Troubleshooting
+
+### Port 3000 already in use
+```bash
+lsof -ti:3000 | xargs kill -9
+```
+
+### API requests failing
+- Verify backend is running on port 8080
+- Check proxy configuration in `package.json`
+- Open browser console to check for errors
+
+### npm install fails
+```bash
+rm -rf node_modules package-lock.json
+npm cache clean --force
+npm install
+```
+
+## 🤝 Contributing
+
+1. Create a feature branch
+2. Make your changes
+3. Test thoroughly
+4. Submit a pull request
+
+## 📚 Learning Resources
+
+- [React Documentation](https://react.dev/)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [Recharts Documentation](https://recharts.org/)
+- [Axios Documentation](https://axios-http.com/)
+
+---
+
+**Happy Coding! 🚀**
