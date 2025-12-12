@@ -286,8 +286,8 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* User Plan - FREE */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            {/* User (Free) */}
             <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
               <div className="mb-8">
                 <h3 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">User</h3>
@@ -300,7 +300,7 @@ export default function LandingPage() {
                 <p className="text-sm text-gray-500 dark:text-gray-500 mt-2 font-light">Forever</p>
               </div>
               <ul className="space-y-3 mb-10">
-                {['Patent & trademark search', 'Basic analytics', 'Search history', 'Email alerts', '5 saved searches'].map((item, idx) => (
+                {['Search patents/trademarks', 'View IP details', 'Basic search history'].map((item, idx) => (
                   <li key={idx} className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
                     <span className="text-gray-700 dark:text-gray-300 font-light">{item}</span>
@@ -312,14 +312,64 @@ export default function LandingPage() {
               </button>
             </div>
 
-            {/* Analyst Plan */}
+            {/* User Pro */}
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
+              <div className="mb-8">
+                <h3 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">User Pro</h3>
+                <p className="text-gray-600 dark:text-gray-400 font-light">Enhanced features</p>
+              </div>
+              <div className="mb-8">
+                <div className="flex items-baseline">
+                  <span className="text-5xl font-light text-gray-900 dark:text-white">$49</span>
+                  <span className="text-gray-600 dark:text-gray-400 ml-2 font-light">/month</span>
+                </div>
+              </div>
+              <ul className="space-y-3 mb-10">
+                {['Everything in User', 'Subscribe to IP filings (10-20 limit)', 'Real-time alerts', 'Filing tracker', 'Advanced visualizations'].map((item, idx) => (
+                  <li key={idx} className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                    <span className="text-gray-700 dark:text-gray-300 font-light">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <button onClick={() => navigate('/register')} className="w-full px-6 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-md font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                Start free trial
+              </button>
+            </div>
+
+            {/* Analyst (Free) */}
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
+              <div className="mb-8">
+                <h3 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">Analyst</h3>
+                <p className="text-gray-600 dark:text-gray-400 font-light">For professionals</p>
+              </div>
+              <div className="mb-8">
+                <div className="flex items-baseline">
+                  <span className="text-5xl font-light text-gray-900 dark:text-white">Free</span>
+                </div>
+                <p className="text-sm text-gray-500 dark:text-gray-500 mt-2 font-light">Forever</p>
+              </div>
+              <ul className="space-y-3 mb-10">
+                {['Search patents/trademarks', 'View IP details', 'Basic analytics'].map((item, idx) => (
+                  <li key={idx} className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                    <span className="text-gray-700 dark:text-gray-300 font-light">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <button onClick={() => navigate('/register')} className="w-full px-6 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-md font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                Get started
+              </button>
+            </div>
+
+            {/* Analyst Pro */}
             <div className="bg-white dark:bg-gray-900 border-2 border-primary-600 dark:border-primary-600 rounded-lg p-8 relative">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary-600 text-white px-4 py-1 rounded-full text-xs font-medium">
                 Popular
               </div>
               <div className="mb-8 mt-2">
-                <h3 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">Analyst</h3>
-                <p className="text-gray-600 dark:text-gray-400 font-light">For professionals</p>
+                <h3 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">Analyst Pro</h3>
+                <p className="text-gray-600 dark:text-gray-400 font-light">Complete analytics</p>
               </div>
               <div className="mb-8">
                 <div className="flex items-baseline">
@@ -328,7 +378,7 @@ export default function LandingPage() {
                 </div>
               </div>
               <ul className="space-y-3 mb-10">
-                {['Everything in User', 'Advanced analytics', 'Subscription monitoring', 'Filing alerts', 'Unlimited searches', 'Competitive intelligence', 'Custom reports', 'Priority support'].map((item, idx) => (
+                {['Everything in Analyst', 'Unlimited IP subscriptions', 'Real-time alerts', 'Filing tracker', 'Advanced visualizations', 'Landscape analytics'].map((item, idx) => (
                   <li key={idx} className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
                     <span className="text-gray-700 dark:text-gray-300 font-light">{item}</span>
@@ -337,38 +387,6 @@ export default function LandingPage() {
               </ul>
               <button onClick={() => navigate('/register')} className="w-full px-6 py-3 bg-primary-600 text-white rounded-md font-medium hover:bg-primary-700 transition-colors">
                 Start free trial
-              </button>
-            </div>
-
-            {/* Admin (No Subscription - Single Admin) */}
-            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                  <Settings className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Admin</h3>
-                <p className="text-gray-600 dark:text-gray-400">Enterprise control center</p>
-              </div>
-              <div className="mb-8">
-                <div className="flex items-center space-x-2">
-                  <Shield className="w-8 h-8 text-primary-600" />
-                  <span className="text-4xl font-extrabold text-gray-900 dark:text-white">Enterprise</span>
-                </div>
-                <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">By invitation only</p>
-              </div>
-              <ul className="space-y-4 mb-10">
-                {['Full platform access', 'User management console', 'API health monitoring', 'System usage logs', 'Advanced security controls', 'Database administration', 'Custom configurations'].map((item, idx) => (
-                  <li key={idx} className="flex items-center space-x-3">
-                    <CheckCircle className="w-6 h-6 text-primary-500 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-gray-300">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <button disabled className="w-full px-6 py-4 bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-500 rounded-xl font-bold text-lg cursor-not-allowed opacity-60">
-                <div className="flex items-center justify-center space-x-2">
-                  <Shield className="w-5 h-5" />
-                  <span>Invitation Required</span>
-                </div>
               </button>
             </div>
           </div>
